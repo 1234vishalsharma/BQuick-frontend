@@ -14,8 +14,8 @@ async function fetchItemsData() {
   try {
     const res = await fetch(PIZZA_URL);
     const data = await res.json();
-    console.log(data);
-    setitems(data);
+    console.log(data?.data);
+    setitems(data?.data);
   } catch (error) {
     console.log("error aaye hai home page ke fet function me ");
     setitems([]);
@@ -39,7 +39,7 @@ useEffect(() => {
   return (
     <div className="flex min-h-screen bg-gray-100">
       {/* Sidebar */}
-      <aside className="w-64 bg-gray-900 text-white flex flex-col">
+      <aside className="w-64 bg-gray-900 text-white flex flex-col fixed h-full">
         <div className="p-4 text-lg font-semibold">Menu</div>
         <nav className="flex-1">
           <ul className="space-y-4 px-4">
@@ -72,7 +72,7 @@ useEffect(() => {
       </aside>
 
       {/* Main Content */}
-      <div className="flex-1 p-8">
+      <div className="flex-1 p-8 ml-64">
         {/* Top Bar */}
         <header className="flex justify-between items-center bg-white shadow p-4 mb-8">
           <div>
